@@ -119,3 +119,19 @@ def buscar_coches_de_cliente(request, cliente_id):
         return JsonResponse(coches, safe=False)
     except Cliente.DoesNotExist:
         return JsonResponse({"error": "Cliente no encontrado"}, status=404)
+
+@csrf_exempt
+def buscar_servicios_de_coche(request, coche_id):
+    try:
+        coche = Coche.objects.get(id=coche_id)
+        servicios = list(
+            CocheServicio.objects.filter(coche=coche)
+            .select_related('servicio')
+            .values("servicio__id", "servicio__nombre", "servicio__descripcion")
+        )
+        respuesta = {
+            "servicios": servicios,
+        }
+        return JsonResponse(respuesta)
+    except Coche.DoesNotExist:
+        return JsonResponse({"error": "Coche no encontrado"}, status=404)
