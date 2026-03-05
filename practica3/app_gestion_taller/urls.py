@@ -12,4 +12,5 @@ urlpatterns = [
     path('clientes/<int:cliente_id>/', buscar_cliente, name='buscar_cliente'),
     path('coches/matricula/<str:matricula>/', buscar_coche_por_matricula, name='buscar_coche_por_matricula'),
     path('clientes/<int:cliente_id>/coches/', buscar_coches_de_cliente, name='buscar_coches_de_cliente'),
+
 ]

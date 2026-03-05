@@ -111,6 +111,7 @@ def buscar_coche_por_matricula(request, matricula):
     except Coche.DoesNotExist:
         return JsonResponse({"error": "Coche no encontrado"}, status=404)
     
+
 @csrf_exempt
 def buscar_coches_de_cliente(request, cliente_id):
     try:
