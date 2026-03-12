@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+    <h1>{{ cliente.nombre }}</h1>
+    <p><b>Teléfono:</b> {{ cliente.telefono }}</p>
+    <p><b>Correo Electrónico:</b> {{ cliente.email }}</p>
+
+    <h2>Coches registrados</h2>
+    {% if coches %}
+        <ul>
+            {% for coche in coches %}
+            <li><a href="{% url 'buscar_servicios_de_coche' coche.id %}">{{ coche.marca }} {{ coche.modelo }}</a> — {{ coche.matricula }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Este cliente no tiene coches registrados en el taller.</p>
+    {% endif %}
+</html>

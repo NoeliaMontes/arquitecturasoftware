@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <h1>Clientes del taller</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <!--El url utiliza el name de urls-->
+                <td><a href="{% url 'detalle_cliente' cliente.id %}">{{ cliente.nombre }}</a></td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</html>
